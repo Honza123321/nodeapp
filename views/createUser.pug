@@ -1,0 +1,36 @@
+doctype html
+html
+    head
+        title= "Login"
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css")
+    body
+        div.body-page
+            div.container
+                div.form-cont
+
+
+
+                    h1 TODO List Create user
+                    if error
+                        .alert.alert-primary.alert-dismissible
+                            button.close(type='button', data-dismiss='alert') ×
+                            strong #{error}
+                    a(href="/login")
+                        button#buttonBack.btn.btn-danger() Back
+                        br
+                        br
+                    form.form-control(method="POST", action='/createUser')
+                        label Username
+                        input.form-control(type='text', name='username')
+                        br
+                        label Password
+                        input.form-control(type='password', name='password')
+                        br
+                        label Password Again
+                        input.form-control(type='password', name='passwordAgain')
+                        br
+                        button.btn.btn-success(type='submit') Submit
+                        br
+                        br
+

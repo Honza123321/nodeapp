@@ -1,0 +1,15 @@
+doctype html
+html(lang='en')
+  head
+    title Todo List
+    script(src='http://code.jquery.com/jquery-latest.min.js', type='text/javascript')
+    link(href='public/stylesheets/style.css', type='text/css', rel='stylesheet')
+  body
+    div#todo-table
+      form
+        input(type='text', name='item', placeholder='Add new item...', required)
+        button(type='submit') Add Item
+      ul
+        li Item 1
+        li Item 2
+        li Item 3

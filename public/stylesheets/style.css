@@ -1,0 +1,51 @@
+#todo-table-div {
+     position: relative;
+     width: 95%;
+     margin: 0 auto;
+ }
+
+button {
+    float: left;
+    margin: 2px;
+}
+
+h1 {
+    text-align: center;
+}
+
+table {
+    cursor: pointer;
+    width: 100%;
+    font-size: 20px;
+}
+
+#add-task-btn{
+    margin-top: 17px;
+}
+#form-container{
+    padding-top: 10%;
+}
+#login-form-div{
+    border: 5px solid gray;
+    margin-left: 20%;
+    margin-right: 20%;
+    background-color: lightcyan;
+}
+#container{
+    background-image:url(../images/image-login.jpg);
+    width: 100%;
+    height: 100vh;
+}
+.hidden-col{
+    display: none;
+}
+.completedTask{
+    background-color: green;
+}
+.todoTask{
+    background-color: red;
+}
+#select-tasks{
+    margin-top: 30px;
+    margin-bottom: 5px;
+}

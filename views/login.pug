@@ -1,0 +1,31 @@
+doctype html
+html
+    head
+        title= "Login"
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css")
+    body
+        div#container
+            div#form-container
+                div#login-form-div
+                    if error
+                        .alert.alert-success.alert-dismissible
+                            button.close(type='button', data-dismiss='alert') ×
+                            strong Wrong username or password
+                            error
+
+
+                    h1 TODO List login page
+                    form.form-control(method="POST", action='/login')
+                        label Username
+                        input.form-control(type='text', name='username')
+                        br
+                        label Password
+                        input.form-control(type='password', name='password')
+                        br
+                        button.btn.btn-success(type='submit') Login
+                        br
+                        br
+                        a(href='/createUser') Create new user
+                        p Forgot your password? You have bad luck.
+                            img(src="/images/smile.jpg" width="40px" height="30px")

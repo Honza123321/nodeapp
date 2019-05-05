@@ -1,0 +1,72 @@
+doctype html
+html(lang='en')
+    head
+        title Todo List
+        script(src='http://code.jquery.com/jquery-latest.min.js', type='text/javascript')
+
+        script(src='/javascripts/todo-list.js')
+        link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css")
+        link(href='/stylesheets/style.css', type='text/css', rel='stylesheet')
+
+    body
+        nav.navbar.navbar-default
+            .container-fluid
+                .navbar-header
+                    a.navbar-brand(href='#') TODO List
+                ul.nav.navbar-nav
+                    li.active
+                        a(href='/logout') Logout
+
+
+
+        div#todo-table-div
+             form#my-form.form-group
+                 label Add item
+                 input.form-control(type='text', name='item', placeholder='Add new item...', required=true)
+                 br
+                 label Add deadline date
+                 input.form-control(type='date', name='deadline', required=true)
+                 button#add-task-btn.btn.btn-success(type='submit' form='my-form') Add Item
+
+             button#delete-task-btn.btn.btn-danger.deleteButton Delete selected item
+             button#complete-state-item-btn.btn.btn-warning Set completed
+             button#todo-state-item-btn.btn.btn-warning Set TODO
+
+
+             select#select-tasks.form-control(name='State')
+              option(value='SEL') Filter tasks by state
+              option(value='ALL') All
+              option(value='TODO') Todo
+              option(value='COMPLETED') Completed
+             table#todo-table.table.table-sm.table-hover
+                  thead.thead-dark
+                      tr
+                          th(width=35)
+                          th Task name
+                          th.hidden-col Id
+                          th Created at
+                          th Deadline
+                          th State
+                  tbody
+                      each val in todos.length ? todos : ['There are no values']
+                          if val._id && val.state === 'COMPLETED'
+                             tr.table-success
+                                td
+                                    img(src="/images/check-square.svg" height="25" widht="25")
+                                td= val.item
+
+                                td.hidden-col= val.id
+                                td= val.createdAt.toDateString()
+                                td= val.deadline.toDateString()
+                                td= val.state
+
+                          else if val._id && val.state === 'TODO'
+                              tr.table-danger
+                                  td
+                                      img(src="/images/check-square.svg" height="25" widht="25")
+                                  td= val.item
+
+                                  td.hidden-col= val.id
+                                  td= val.createdAt.toDateString()
+                                  td= val.deadline.toDateString()
+                                  td= val.state
