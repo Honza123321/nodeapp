@@ -14,7 +14,7 @@ let express = require('express');
 let todoController = require('./controllers/todocontroller');
 let app = express();
 const xssFilter = require('x-xss-protection');
-let mongoDBUrl = process.env.MONGODB_URI || 'mongodb://'+ process.env.MONGODB_USER+':'+ process.env.MONGODB_PASSWORD +'@172.30.74.122:27017/'+process.env.MONGODB_DATABASE;
+let mongoDBUrl = process.env.MONGODB_URI || 'mongodb://'+ process.env.MONGODB_USER+':'+ process.env.MONGODB_PASSWORD +'@172.30.115.53:27017/'+process.env.MONGODB_DATABASE;
 //let mongoDBUrl ="mongodb://localhost/todo";
 mongoose.connect(mongoDBUrl);
 mongoose.Promise = global.Promise;
@@ -54,10 +54,10 @@ todoController(app);
 app.use('/', indexRouter);
 //app.use('/users', usersRouter);
 app.use(xssFilter());
-app.listen(process.env.PORT);
+//app.listen(process.env.PORT);
 
 
-//app.listen(3000);
+app.listen(3000);
 //console.log('You are listening to port 3000');
 
 
