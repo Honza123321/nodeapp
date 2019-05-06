@@ -1,7 +1,9 @@
 $(document).ready(function () {
 
     $(document).on("click", "#add-task-btn", function () {
-        let data = $('#my-form').serializeArray();
+
+        let form = document.getElementById("my-form");
+        let data = form.serializeArray();
 
         let task = data[0].value;
         let deadline = data[1].value;
