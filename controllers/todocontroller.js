@@ -1,13 +1,11 @@
-//var data = [{item: 'get milk'}, {item: 'walk dog'}, {item: 'kick some coding ass'}];
 let Todo = require('../models/task');
 let bodyParser = require('body-parser');
-let urlEncoderParser = bodyParser.urlencoded({extended: false});
+let urlEncoderParser = bodyParser.urlencoded({extended: true});
 
 module.exports = function (app) {
     app.get('/todo/', function (req, res) {
         let username = req.session.loggedUser.username;
         let state = req.query.state;
-        // console.log("STATE:" + state);
         Todo.getTasks(username, state, function (err, data) {
             if(err) {
                 res.render('error')
@@ -28,31 +26,17 @@ module.exports = function (app) {
             }
         });
     });
-    //
-    // app.get('/todo/getTasksByState', function (req, res) {
-    //     let username = req.session.loggedUser.username;
-    //     let state = req.query.state;
-    //     console.log("STATE: " + state);
-    //     Todo.getTasksByState(username, state, function (err, data) {
-    //         if(err) {
-    //             res.send(JSON.stringify());
-    //         } else {
-    //             res.send(JSON.stringify({todos: data}));
-    //         }
-    //     });
-    // });
 
     app.post('/todo/createTask', urlEncoderParser, function (req, res) {
-        let item = req.body.task;
+        let item = req.body.item;
         let author = req.session.loggedUser.username;
         let deadline = req.body.deadline;
+
         Todo.createTask(item, author, deadline, function (err) {
             if(err) {
-                console.log(err);
-                return;
+                return res.redirect("/todo");
             } else {
-                console.log(err);
-                return;
+                return res.redirect("/todo");
             }
         });
     });
@@ -65,16 +49,6 @@ module.exports = function (app) {
         });
     });
 
-
-    //
-    // app.delete('/todo/:id', function (req, res) {
-    //     //delete the requested item from mongodb
-    //     Todo.find({_id: req.params.id}).remove(function (err, data) {
-    //         if (err) throw err;
-    //         res.json(data);
-    //
-    //     });
-    // });
 
     app.post('/todo/setCompleteState/:id', function (req, res) {
         Todo.setState({_id: req.params.id}, 'COMPLETED', function (err) {
@@ -99,11 +73,3 @@ module.exports = function (app) {
     });
 
 };
-
-
-/*
-* { item: "paper" },
-   {
-     $set: { "size.uom": "cm", status: "P" },
-     $currentDate: { lastModified: true }
-   }*/

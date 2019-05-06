@@ -20,15 +20,13 @@ html(lang='en')
 
 
         div#todo-table-div
-             form#my-form.form-group
+             form#my-form.form-group(method="POST", action="/todo/createTask/")
                  label Add item
-                 input#task.form-control(type='text', name='item', placeholder='Add new item...', required=true)
+                 input#item.form-control(type='text', name='item', placeholder='Add new item...', required=true)
                  br
                  label Add deadline date
                  input#deadline.form-control(type='date', name='deadline', required=true)
-
                  input#add-task-btn.btn.btn-success(type='submit' value='Submit' name="submit-btn")
-                 br
 
              button#delete-task-btn.btn.btn-danger.deleteButton Delete selected item
              button#complete-state-item-btn.btn.btn-warning Set completed

@@ -40,7 +40,7 @@ UserSchema.statics.authenticate = function (username, password, callback) {
 };
 
 UserSchema.statics.addUser = function (username, password, callback) {
-   var user = new User({username:sanitize(username), password:sanitize(password)});
+   let user = new User({username:sanitize(username), password:sanitize(password)});
    user.save(function (err) {
        if(err) {
            return callback(err);

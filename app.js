@@ -17,7 +17,8 @@ const xssFilter = require('x-xss-protection');
 let mongoDBUrl = process.env.MONGODB_URI;
 //'mongodb://'+ process.env.MONGODB_USER+':'+ process.env.MONGODB_PASSWORD +'@172.30.115.53:27017/'+process.env.MONGODB_DATABASE
 //let mongoDBUrl ="mongodb://localhost/todo";
-mongoose.connect(mongoDBUrl);
+mongoose.connect(mongoDBUrl, { useNewUrlParser: true });
+mongoose.set('useCreateIndex', true);
 mongoose.Promise = global.Promise;
 
 let db = mongoose.connection;
@@ -40,7 +41,8 @@ app.use(function(req,res,next){
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true}));
+
 app.use(cookieParser());
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 //set up templates
@@ -55,6 +57,7 @@ todoController(app);
 app.use('/', indexRouter);
 //app.use('/users', usersRouter);
 app.use(xssFilter());
+app.use(express.urlencoded({extended: true}));
 //app.listen(process.env.PORT);
 
 
