@@ -7,7 +7,7 @@ module.exports = function (app) {
     app.get('/todo/', function (req, res) {
         let username = req.session.loggedUser.username;
         let state = req.query.state;
-        console.log("STATE:" + state);
+        // console.log("STATE:" + state);
         Todo.getTasks(username, state, function (err, data) {
             if(err) {
                 res.render('error')

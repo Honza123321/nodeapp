@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-var sanitize = require('mongo-sanitize');
+let sanitize = require('mongo-sanitize');
 
 
 // basic schema, only username and password
@@ -56,7 +56,7 @@ UserSchema.statics.addUser = function (username, password, callback) {
 * hashing a password before saving it to the database
 */
 UserSchema.pre('save', function (next) {
-    var user = this;
+    let user = this;
     // bcrypt hash method
     bcrypt.hash(user.password, 10, function (err, hash){
         if (err) {

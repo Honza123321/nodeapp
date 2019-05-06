@@ -14,8 +14,9 @@ let express = require('express');
 let todoController = require('./controllers/todocontroller');
 let app = express();
 const xssFilter = require('x-xss-protection');
-//let mongoDBUrl = process.env.MONGODB_URI || 'mongodb://'+ process.env.MONGODB_USER+':'+ process.env.MONGODB_PASSWORD +'@172.30.115.53:27017/'+process.env.MONGODB_DATABASE;
-let mongoDBUrl ="mongodb://localhost/todo";
+let mongoDBUrl = process.env.MONGODB_URI;
+//'mongodb://'+ process.env.MONGODB_USER+':'+ process.env.MONGODB_PASSWORD +'@172.30.115.53:27017/'+process.env.MONGODB_DATABASE
+//let mongoDBUrl ="mongodb://localhost/todo";
 mongoose.connect(mongoDBUrl);
 mongoose.Promise = global.Promise;
 

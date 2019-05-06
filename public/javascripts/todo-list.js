@@ -29,7 +29,7 @@ $(document).ready(function () {
 
         let valueSelected = this.value;
         let selectedIndex = this.selectedIndex;
-        console.log(selectedIndex);
+        //console.log(selectedIndex);
 
         location = "/todo/?state="+valueSelected;
         $('#select-tasks').selectedIndex = "2";

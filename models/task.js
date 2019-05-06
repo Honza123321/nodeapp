@@ -69,8 +69,8 @@ todoSchema.statics.getTasks = function(username, state, callback) {
 // };
 
 todoSchema.statics.createTask = function(item, author, deadline, callback) {
-    console.log("Item: " + item);
-    console.log("Deadline: " + deadline);
+    // console.log("Item: " + item);
+    // console.log("Deadline: " + deadline);
     let task = new Todo({item: sanitize(item), deadline:sanitize(deadline), author:sanitize(author)});
     let ok  = task.save(function (err) {
         if(err) {
