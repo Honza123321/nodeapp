@@ -22,10 +22,10 @@ html(lang='en')
         div#todo-table-div
              form#my-form.form-group
                  label Add item
-                 input.form-control(type='text', name='item', placeholder='Add new item...', required=true)
+                 input#task.form-control(type='text', name='item', placeholder='Add new item...', required=true)
                  br
                  label Add deadline date
-                 input.form-control(type='date', name='deadline', required=true)
+                 input#deadline.form-control(type='date', name='deadline', required=true)
                  button#add-task-btn.btn.btn-success(type='submit' form='my-form') Add Item
 
              button#delete-task-btn.btn.btn-danger.deleteButton Delete selected item

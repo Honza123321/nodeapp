@@ -1,15 +1,10 @@
 $(document).ready(function () {
 
-    $(document).on("click", "#add-task-btn", function () {
+    $("#add-task-btn").on('click', function () {
+        let task = $('#task').val();
+        let deadline = $('#deadline').val();
 
-
-        let data = $('#my-form').serialize();
-        console.log(data);
-
-        let task = data[0].value;
-        let deadline = data[1].value;
-
-        if(data[0].value !== "" && data[1].value !== ""){
+        if(task !== "" && deadline!== ""){
             let todo = {
                 task: task,
                 deadline: deadline,
@@ -25,6 +20,15 @@ $(document).ready(function () {
 
         }
     });
+
+        //let data = $('#my-form').serialize();
+        //console.log(data);
+
+        // let task = data[0].value;
+        //         // let deadline = data[1].value;
+
+
+
 
 
     $('#select-tasks').on('change', function () {
